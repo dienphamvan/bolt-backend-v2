@@ -1,0 +1,64 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String
+  license   License?
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+}
+
+model License {
+  id         String   @id @default(uuid())
+  number     String   @unique
+  validUntil DateTime
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model Car {
+  id        String            @id @default(uuid())
+  brand     String
+  model     String
+  stock     Int
+  pricing   SeasonalPricing[]
+  bookings  Booking[]
+  createdAt DateTime          @default(now())
+}
+
+model SeasonalPricing {
+  id     String  @id @default(uuid())
+  season Season
+  price  Decimal
+  carId  String
+  car    Car     @relation(fields: [carId], references: [id])
+}
+
+enum Season {
+  PEAK
+  MID
+  OFF
+}
+
+model Booking {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  car        Car      @relation(fields: [carId], references: [id])
+  carId      String
+  startDate  DateTime
+  endDate    DateTime
+  totalPrice Decimal
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, startDate, endDate])
+}
