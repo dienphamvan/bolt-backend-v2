@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 import {
   registerDecorator,
   ValidationOptions,
@@ -9,7 +12,7 @@ export function IsAfter(
   property: string,
   validationOptions?: ValidationOptions,
 ) {
-  return function (object: Object, propertyName: string) {
+  return function (object: Record<any, any>, propertyName: string) {
     registerDecorator({
       name: 'isAfter',
       target: object.constructor,

@@ -7,6 +7,16 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(process.env.PORT ?? 8000);
+  // Enable CORS for all origins
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Accept',
+  });
+
+  await app.listen(process.env.PORT ?? 8000, () => {
+    console.log(`Server is running on port ${process.env.PORT ?? 8000}`);
+  });
 }
+
 bootstrap();
