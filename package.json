@@ -19,7 +19,10 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "seed": "ts-node prisma/seed.ts",
-    "gen": "yarn prisma generate"
+    "gen": "yarn prisma generate",
+    "docker:rm": "docker rm -f bolt-backend",
+    "docker:build": "docker build -t bolt-backend .",
+    "docker:run": "docker run --env-file .env -d -p 127.0.0.1:8000:8000 --name bolt-backend bolt-backend"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
