@@ -1,5 +1,3 @@
-Here’s a rewritten and cleaned-up version of your `README.md` in English, with improved formatting, grammar, and clarity:
-
 ---
 
 # Bolt Car Rental – Backend
