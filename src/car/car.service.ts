@@ -50,7 +50,6 @@ export class CarService {
   }
 
   async getCarById(id: string, { startDate, endDate }: GetCarByIdRequest) {
-    console.log(`Fetching car with ID: ${id}`);
     const car = await this.prismaService.car.findUnique({
       where: { id },
       include: {
@@ -106,9 +105,6 @@ export class CarService {
     endDate: string;
     carId?: string;
   }) {
-    console.log('startDate', startDate);
-    console.log('endDate', endDate);
-
     const bookings = await this.prismaService.booking.groupBy({
       by: ['carId'],
       _count: true,
