@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Install deps
 COPY package.json yarn.lock ./
-RUN yarn
+RUN yarn install --frozen-lockfile
 
 # Copy all files
 COPY . .
