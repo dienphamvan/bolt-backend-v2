@@ -49,7 +49,7 @@ This is the backend service for the Bolt Car Rental application. It is built wit
 2. **Install dependencies**
 
    ```bash
-   npm install
+   yarn install
    ```
 
 3. **Configure environment variables**
@@ -63,7 +63,7 @@ This is the backend service for the Bolt Car Rental application. It is built wit
 4. **Run database migrations**
 
    ```bash
-   npx prisma migrate deploy
+   yarn prisma migrate deploy
    ```
 
 5. **Generate Prisma client**
@@ -71,19 +71,19 @@ This is the backend service for the Bolt Car Rental application. It is built wit
    *(Note: This step is often handled automatically during migration, but you can run it manually if needed)*
 
    ```bash
-   npx prisma generate
+   yarn prisma generate
    ```
 
 6. **Seed the database**
 
    ```bash
-   npm run seed
+   yarn run seed
    ```
 
 7. **Start the development server**
 
    ```bash
-   npm run start:dev
+   yarn run start:dev
    ```
 
    The server will be running at [http://localhost:8000](http://localhost:8000) by default.
@@ -94,12 +94,12 @@ This is the backend service for the Bolt Car Rental application. It is built wit
 
 | Command             | Description                         |
 | ------------------- | ----------------------------------- |
-| `npm run build`     | Build the project                   |
-| `npm run start:dev` | Start the app in development mode   |
-| `npm run test`      | Run unit tests                      |
-| `npm run test:cov`  | Run tests with coverage report      |
-| `npm run seed`      | Seed initial data into the database |
-| `npm run gen`       | Generate Prisma client              |
+| `yarn run build`     | Build the project                   |
+| `yarn run start:dev` | Start the app in development mode   |
+| `yarn run test`      | Run unit tests                      |
+| `yarn run test:cov`  | Run tests with coverage report      |
+| `yarn run seed`      | Seed initial data into the database |
+| `yarn run gen`       | Generate Prisma client              |
 
 ---
 
