@@ -6,6 +6,8 @@ This is the backend service for the Bolt Car Rental application. It is built wit
 
 ---
 
+## Deployment link: https://carental.dienphamvan.site/
+
 ## 🚗 Features
 
 * Check car availability within a date range
