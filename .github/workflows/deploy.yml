@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE_NAME: yourdockerhubusername/bolt-backend
+  IMAGE_NAME: dienpvan/bolt-backend
   IMAGE_TAG: latest
 
 jobs:
