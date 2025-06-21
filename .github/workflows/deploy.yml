@@ -58,4 +58,4 @@ jobs:
           script: |
             sudo docker pull ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
             sudo docker rm bolt-backend -f || true
-            sudo docker run --env-file ~/bolt-backend/.env -d --name bolt-backend -p 127.0.0.1:8000:8000 ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} --restart unless-stopped
+            sudo docker run --env-file ~/bolt-backend/.env -d --name bolt-backend -p 127.0.0.1:8000:8000  --restart unless-stopped ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
