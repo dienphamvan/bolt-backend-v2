@@ -41,10 +41,21 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and Push Docker image (multi arch)
+      - name: Build and Push Docker image (arm arch)
         uses: docker/build-push-action@v5
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm64
           push: true
           tags: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
+      - name: SSH into EC2 and pull & restart container
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo docker pull ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+            sudo docker rm bolt-backend -f || true
+            sudo docker run --env-file ~/bolt-backend/.env -d --name bolt-backend -p 127.0.0.1:8000:8000 ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
